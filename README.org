@@ -1,0 +1,3 @@
+* Trig Utils
+
+This is a repo compiling the worst trig code ever written. I want to die.
