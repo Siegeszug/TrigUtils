@@ -1,3 +1,5 @@
+import Data.List
+
 pythagTriples :: Int -> [(Int, Int, Int)]
 pythagTriples max = [ (a, b, c) | c <- [1..max], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2 ]
 
@@ -10,9 +12,7 @@ coprime _ [] = True
 coprime (n:l') m = (not (elem n m)) && (coprime l' m)
 
 coprime3 :: (Int, Int, Int) -> Bool
-coprime3 (a, b, c) = coprime (fct a) (fct b) ||
-                     coprime (fct b) (fct c) ||
-                     coprime (fct a) (fct c)
+coprime3 (a, b, c) = (intersect (intersect (fct a) (fct b)) (fct c)) == []
                          
 primatives :: Int -> [(Int, Int, Int)]
 primatives max = [ t | t <- (pythagTriples max), (coprime3 t) ]
